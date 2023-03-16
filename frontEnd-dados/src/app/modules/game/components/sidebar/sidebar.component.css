@@ -1,0 +1,10 @@
+.nav-pills li a:hover{
+    background-color: #6AC3EC;
+    color: #2A338A !important;
+    cursor: pointer;
+}
+
+.nav-link.active {
+    background-color: #6AC3EC;
+    color: #2A338A !important;
+  }

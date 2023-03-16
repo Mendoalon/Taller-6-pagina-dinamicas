@@ -1,20 +1,17 @@
 const express = require('express');
 const cors = require('cors');
-const { dbConnection } = require('../database/config');
 
 class Server {
-
 
     constructor() {
         this.app = express();
 
         //Objetos de rutas.
-        this.paths ={
+        this.paths = {
             createGame: '/createGame',
+            allGame: '/game',
+            winner: '/winner',
         }
-
-        //Conectar a base de datos
-        this.connectarDB();
 
         //Middlewares
         this.middleware();
@@ -24,22 +21,18 @@ class Server {
 
     }
 
-    async connectarDB(){
-        await dbConnection();
-    } 
-
-
     middleware() {
         //CORS
-        this.app.use( cors() );
-
+        this.app.use(cors());
 
         //Parseo y lectura del body y archivos json en express
-        this.app.use( express.json());
+        this.app.use(express.json());
     }
 
     routes() {
-        this.app.use( this.paths.createGame, require('../routes/createGame') );   
+        this.app.use(this.paths.createGame, require('../routes/createGame'));
+        this.app.use(this.paths.allGame, require('../routes/allGame'));
+        this.app.use(this.paths.winner, require('../routes/winner'));
     }
 
     listen() {

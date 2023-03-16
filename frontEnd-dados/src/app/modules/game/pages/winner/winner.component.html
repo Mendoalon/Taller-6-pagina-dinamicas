@@ -1,0 +1,20 @@
+<div class="container my-5">
+  <div *ngIf="winner" class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0 justify-content-center align-items-center">
+      <div class="col-md-4">
+        <img src="../../../../../assets/winner.jpg" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">¡{{winner.name}}!</h5>
+
+          <p class="card-text">Felicitaciones <span class="text-capitalize fw-bold">{{winner.name}}</span> has ganado la
+            última partida!.</p>
+          <p class="card-text fw-bold"><small class="text-muted">Ganaste con el número: </small> {{winner.winner}}</p>
+          <button type="submit" routerLink="../playing" class="btn fw-bold" href="">Jugar de nuevo</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

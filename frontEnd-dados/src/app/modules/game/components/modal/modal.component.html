@@ -1,0 +1,31 @@
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Ingrese los datos de los jugadores</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label class="col-form-label">Jugador 1:</label>
+              <input formControlName="player1" type="text" class="form-control" id="recipient-name" placeholder="Ingrese nombre">
+            </div>
+            <div class="mb-3">
+              <label class="col-form-label">Jugador 2:</label>
+              <input formControlName="player2" type="text" class="form-control" id="recipient-name" placeholder="Ingrese nombre">
+            </div>
+            <div class="mb-3">
+              <label class="col-form-label">Jugador 3:</label>
+              <input formControlName="player3"  type="text" class="form-control" id="recipient-name" placeholder="Ingrese nombre">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button [disabled]="!myForm.valid" (click)="onSubmit()" type="submit" class="btn btn-primary"  data-bs-dismiss="modal">Crear Jugadores</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

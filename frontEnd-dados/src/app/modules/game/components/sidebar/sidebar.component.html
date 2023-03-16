@@ -1,0 +1,23 @@
+<div class="sidebar">
+    <a class="d-flex text-decoration-none mt-1  text-white" href="">
+        <img src="https://ik.imagekit.io/lvh0tltbeph/SofkaU/logo-sofkau_1Fn3uH-1S.png" alt="Logo" width="150"
+            height="50" class="img-fluid">
+    </a>
+    <ul class="nav nav-pills flex-column mt-4 gap-2">
+        <li class="nav-item">
+            <a routerLink="playing" routerLinkActive="active" class="nav-link text-white">
+                <span class="fs-4 d-sm-inline">Jugar</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="winner" routerLinkActive="active" class="nav-link text-white">
+                <span class="fs-4 d-sm-inline">Ganador</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a (click)="exit()" class="nav-link text-white" >
+                <span class="fs-4 d-sm-inline">Salir</span>
+            </a>
+        </li>
+    </ul>
+</div>

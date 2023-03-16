@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+:roo{
+    --color-primay: 
+    --bg-primary:
+}
+
+
+body{
+    background-image: url('./assets/dados.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+  .btn{
+    background-color: #050531;
+    color: white;
+  }
+
+  .btn:hover{
+    background-color: #6AC3EC;
+    color: #2A338A !important;
+}
