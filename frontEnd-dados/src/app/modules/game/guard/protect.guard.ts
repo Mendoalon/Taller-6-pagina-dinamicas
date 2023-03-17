@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +8,10 @@ export class ProtectGuard implements CanActivate {
 
   constructor(private router: Router) {}
 
-
+//Guardián para proteger las rutas de la aplicación
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const item = localStorage.getItem('id'); // Reemplazar 'mi-dato' por el nombre del dato a verificar  
-    
+    const item = localStorage.getItem('id'); 
+
     if (item) {
       return true; // Permite el acceso a la ruta
     } else {

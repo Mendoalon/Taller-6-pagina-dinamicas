@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
+//Importación de operadores de Router para la redirección de rutas.
 import { Router } from '@angular/router';
+
+//Importación del servicio GamerService para emplear sus funciones.
 import { GamerService } from '../../services/gamer.service';
 
 @Component({
@@ -9,20 +13,22 @@ import { GamerService } from '../../services/gamer.service';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(  private gamerService: GamerService,
-                private router: Router) { }
+  //Constructor donde creamos el objeto gamerService de tipo servicio.
+  constructor(private gamerService: GamerService,
+    private router: Router) { }
 
+  //Ciclo de inicialización del componente.
   ngOnInit(): void {
   }
 
+  //Función para salir del juego, borramos el juego en el backend
   exit(): void {
-    this.gamerService.delteGame().subscribe( data =>{
+    this.gamerService.delteGame().subscribe(data => {
       this.router.navigate(['/']);
       localStorage.clear();
-    } )
+    })
 
   }
-
 
 
 }

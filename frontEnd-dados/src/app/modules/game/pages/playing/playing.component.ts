@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
+//Importación de la interface Games para tipar los datos.
 import { Games } from '../../interfaces/games.Models';
+
+//Importación del servicio GamerService para emplear sus funciones.
 import { GamerService } from '../../services/gamer.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-playing',
@@ -9,31 +12,37 @@ import { Router } from '@angular/router';
   styleUrls: ['./playing.component.css']
 })
 export class PlayingComponent implements OnInit {
-  dado: string = '../assets/img/dice1.png'
+
+  /**
+  * Variables usadas en este componente.
+  */
+  dice: string = '../assets/img/dice1.png'
   id: any = '';
   gamer!: any;
-  valores: number[] = [0, 0, 0];
-  mensaje: string = '';
-  numero: number = 0;
+  values: number[] = [0, 0, 0];
+  messages: string = '';
+  number: number = 0;
   btn: string = '';
-  ganador!: Games;
-  numganador!: number;
+  winner!: Games;
 
-  constructor(private router: Router,
-    private gamerService: GamerService) { }
+  //Constructor donde creamos el objeto gamerService de tipo servicio.
+  constructor(private gamerService: GamerService) { }
 
+  //Ciclo de inicialización del componente.
   ngOnInit(): void {
 
     this.allGamer();
     this.btn = 'Lanzar Dado';
   }
 
-
-
-
+  /**
+  * Función para obtener el juego guardado.
+  */
   allGamer() {
-    // Verificar si el elemento "miDato" existe en el Local Storage
+
+    // Verificar si el elemento "miDato" existe en el localStorage.
     if (localStorage.getItem('id') !== null) {
+
       // Si existe, recuperar el elemento
       this.id = localStorage.getItem('id');
 
@@ -42,52 +51,58 @@ export class PlayingComponent implements OnInit {
 
       })
     } else {
+
       // Si no existe, hacer algo más
-      console.log('El elemento "miDato" no existe en el Local Storage.');
+      console.log('El elemento "id" no existe en el Local Storage.');
     }
 
   }
 
-  llamarServicio() {
+/**
+* Función donde validamos el valor del botón btn y dependiendo su valor consumimos alguno de los dos servicios.
+*/
+  callServices() {
     if (this.btn === 'Lanzar Dado') {
-      this.lanzarDado();
+      this.diceLaunch();
     } else if (this.btn === 'Guardar Partida') {
-      this.gamerService.sevaWinner(this.ganador, this.numero).subscribe(msg => {
+      this.gamerService.sevaWinner(this.winner).subscribe(msg => {
         this.btn = 'Lanzar Dado';
-        this.mensaje = '';
+        this.messages = '';
       });
     }
   }
 
-  lanzarDado(): void {
+  /**
+  * Función lanzar dado, validamos campos y generamos valor a las variables. 
+  */
+  diceLaunch(): void {
 
-    if ((this.valores[0] === this.valores[1]) || (this.valores[1] === this.valores[2]) || (this.valores[0] === this.valores[2])) {
-      this.mensaje = 'No se pueden repetir los valores'
+    if ((this.values[0] === this.values[1]) || (this.values[1] === this.values[2]) || (this.values[0] === this.values[2])) {
+      this.messages = 'No se pueden repetir los valores'
       setTimeout(() => {
-        this.mensaje = '';
+        this.messages = '';
       }, 2000);
       return;
     }
 
-    this.numero = Math.round(Math.random() * 5) + 1;
-    this.dado = `../assets/img/dice${this.numero}.png`
-    this.verifcarGanador();
+    this.number = Math.round(Math.random() * 5) + 1;
+    this.dice = `../assets/img/dice${this.number}.png`
+    this.verifyWinner();
   }
 
-  verifcarGanador(): void {
-    for (let i = 0; i < this.valores.length; i++) {
-      if (this.numero === this.valores[i]) {
-        this.mensaje = `Has ganado ${this.gamer[i].name}`;
+  /**
+  * Función donde validamos al ganador y lo guardamos.
+  */
+  verifyWinner(): void {
+    for (let i = 0; i < this.values.length; i++) {
+      if (this.number === this.values[i]) {
+        this.messages = `Has ganado ${this.gamer[i].name}`;
         this.btn = 'Guardar Partida'
-        this.gamer[i].winner = this.numero;
-        this.ganador = this.gamer[i];
+        this.gamer[i].winner = this.number;
+        this.winner = this.gamer[i];
       }
     }
   }
-
-
-
-
 
 
 }

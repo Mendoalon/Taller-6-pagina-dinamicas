@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-plays',
@@ -7,15 +6,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./plays.component.css']
 })
 export class PlaysComponent implements OnInit {
-  constructor( private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
 
-    // setTimeout(() => {
-    //   if (localStorage.getItem('id') === null) {
-    //     this.router.navigate(['/']);
-    //     }
-    //     }, 1000);
   }
 
 }

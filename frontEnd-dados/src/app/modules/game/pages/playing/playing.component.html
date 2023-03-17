@@ -1,21 +1,21 @@
 <div class="jumbotron text-center">
 
-  <img class="img" [src]="dado" />
+  <img class="img" [src]="dice" />
 
   <div class="container">
     <div class="row">
       <div *ngFor="let game of gamer; let i = index" class="col-4">
         <p class="title fs-4">{{ game.name }}</p>
         <label class="input-group-text">Ingrese un número del 1 al 6</label>
-        <input class="form-control mt-1" type="number" [(ngModel)]="valores[i]" name="age" min="1" max="6">
+        <input class="form-control mt-1" type="number" [(ngModel)]="values[i]" name="age" min="1" max="6">
      
       </div>
-      <h1 class="mt-2" *ngIf="mensaje.length > 0">
-        <span class="badge text-bg-success">{{mensaje}}</span>
+      <h1 class="mt-2" *ngIf="messages.length > 0">
+        <span class="badge text-bg-success">{{messages}}</span>
       </h1>
     </div>
   </div>
-  <button class="btn btn-lg mt-4" (click)="llamarServicio()">
+  <button class="btn btn-lg mt-4" (click)="callServices()">
     {{btn}}
   </button>
 
