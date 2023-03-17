@@ -1,8 +1,10 @@
+//Importamos responsé y request para tener ayuda de tipado.
 const { response, request } = require('express');
+
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 
-
+//Función para crear un juego.
 const startGame = (req, res = response) => {
     const { id, type, gamers } = req.body;
 
@@ -30,49 +32,51 @@ const startGame = (req, res = response) => {
         console.log('Archivo JSON creado correctamente');
     });
 
-    res.json({ 
-                msg: 'Partida creada correctamente!', 
-                id: id
-            });
+    res.json({
+        msg: 'Partida creada correctamente!',
+        id: id
+    });
 
 }
 
-    const deleteGame = (req, res = response) =>{
+
+//Función para eliminar un juego.
+const deleteGame = (req, res = response) => {
 
 
-        const filePath1 = './database/gamer.json';
-        const filePath2 = './database/winner.json';
-  
-
-       
-
-            if (fs.existsSync(filePath1)) {
-                fs.unlinkSync(filePath1);
-                console.log('Archivo 1 eliminado');
-              } else {
-                console.log('El archivo 1 no existe');
-              }
-              
-              if (fs.existsSync(filePath2)) {
-                fs.unlinkSync(filePath2);
-                console.log('Archivo 2 eliminado');
-              } else {
-                console.log('El archivo 2 no existe');
-              }  
-              
-              res.json({
-                msg: 'Se elimino la partida'
-            });
-
-
-    }   
-    
- 
-
-    
+    const filePath1 = './database/gamer.json';
+    const filePath2 = './database/winner.json';
 
 
 
+
+    if (fs.existsSync(filePath1)) {
+        fs.unlinkSync(filePath1);
+        console.log('Archivo 1 eliminado');
+    } else {
+        console.log('El archivo 1 no existe');
+    }
+
+    if (fs.existsSync(filePath2)) {
+        fs.unlinkSync(filePath2);
+        console.log('Archivo 2 eliminado');
+    } else {
+        console.log('El archivo 2 no existe');
+    }
+
+    res.json({
+        msg: 'Se elimino la partida'
+    });
+
+
+}
+
+
+
+
+
+
+//Exportamos la función startGame y deleteGame.
 module.exports = {
     startGame,
     deleteGame

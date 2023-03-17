@@ -1,8 +1,11 @@
-//Empleamos la ruta usuarios con y en cada enpoi llamamos a su controlador. 
+//Obtenemos el objeto ruta de express.
 const { Router } = require('express');
+const router = Router();
+
+//Importamos los archivos de nombre winner y allWinner, donde aplicamos la lógica de las petición.
 const { winner, allWinner } = require('../controllers/winner');
 
-const router = Router();
+
 
 
 //Ingreso a guardar ganador
@@ -11,5 +14,5 @@ router.post('/', winner);
 //Ingreso a optener ganador
 router.get('/', allWinner);
 
-
+//exportamos las rutas creadas
 module.exports = router;

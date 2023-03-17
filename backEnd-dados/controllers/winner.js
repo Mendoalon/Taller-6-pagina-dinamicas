@@ -1,8 +1,10 @@
+//Importamos responsé y request para tener ayuda de tipado.
 const { response, request } = require('express');
 
+//Paquete fs para la creación, lectura, eliminación y actualización e archivos.
 const fs = require('fs');
 
-
+//Función para crear el ganador de la partida.
 const winner = (req, res = response) => {
   const  winner  = req.body;
   const winners = JSON.stringify(winner);
@@ -24,9 +26,12 @@ const winner = (req, res = response) => {
     
 }
 
+//Función para obtener el ganado de la partida.
 const allWinner =( req, res= response) =>{
 
     try {
+        
+        //Creamos el archivo winner
         const jsonString = fs.readFileSync('./database/winner.json', 'utf-8');
         if(!jsonString.length){
             res.json({ msg: 'No ha guardado ganador' })
@@ -43,7 +48,7 @@ const allWinner =( req, res= response) =>{
 }
 
 
-
+//Exportamos la funciónes winner y allWinner.
 module.exports = {
     winner,
     allWinner

@@ -1,12 +1,16 @@
-//Empleamos la ruta usuarios con y en cada enpoi llamamos a su controlador. 
-const { Router } = require('express');
-const { allGame } = require('../controllers/allGame');
 
+//Obtenemos el objeto ruta de express.
+const { Router } = require('express');
 const router = Router();
 
+//Importamos el archivo de nombre allGame donde aplicamos la lógica de las petición.
+const { allGame } = require('../controllers/allGame');
 
-//Ingreso a optener juego
+
+
+
+//Ingreso a obtener juego por ID
 router.get('/:id', allGame);
 
-
+//exportamos las rutas creadas.
 module.exports = router;
